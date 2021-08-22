@@ -21,7 +21,8 @@
                         </div>
 
                         <div>
-                            <strong>Your code is:</strong> <a href="{{$referral_link}}">{{$referral_code}}</a>
+                            <strong>My code is:</strong> {{$referral_code}}
+                            @include('components.copy-referral-code')
                         </div>
 
                         <div class="mt-3">
