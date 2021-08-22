@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')->with([
+            'referral_code' => $referral_code = auth()->user()->referral_code,
+            'referral_link' => route('referral.link', ['referralCode' => $referral_code])
+        ]);
     }
 }
