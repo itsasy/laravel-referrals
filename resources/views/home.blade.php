@@ -17,7 +17,38 @@
                         {{ __('You are logged in!') }}
 
                         <div>
-                            Your code is: <a href="{{$referral_link}}">{{$referral_code}}</a>
+                            <strong>My referral is:</strong> {{$referred_by}}
+                        </div>
+
+                        <div>
+                            <strong>Your code is:</strong> <a href="{{$referral_link}}">{{$referral_code}}</a>
+                        </div>
+
+                        <div class="mt-3">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="row">Referral Code</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($referrals as $referral)
+                                    <tr>
+                                        <th scope="row">
+                                            {{$referral->referral_code}}
+                                        </th>
+                                        <td>
+                                            {{$referral->name}}
+                                        </td>
+                                        <td>
+                                            {{$referral->email}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
