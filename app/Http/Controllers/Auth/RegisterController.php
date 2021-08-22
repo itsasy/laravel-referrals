@@ -68,7 +68,18 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'referral_code' => User::getUniqueReferralCode()
+            'referral_code' => User::getUniqueReferralCode(),
+            'referred_by' => $this->getReferredBy()
         ]);
+    }
+
+    private function getReferredBy()
+    {
+        $referralCode = \Cookie::get('referral');
+
+        if ($referralCode)
+            return User::where('referral_code', $referralCode)->value('id');
+
+        return null;
     }
 }
